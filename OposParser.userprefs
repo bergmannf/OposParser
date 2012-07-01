@@ -1,0 +1,32 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="z:\OposParser\OposParser\View\MainWindow.xaml.cs">
+    <Files>
+      <File FileName="OposParser\Logic\ExcelInterop.cs" Line="17" Column="1" />
+      <File FileName="OposParser\Starter.cs" Line="1" Column="1" />
+      <File FileName="OposTests\ExcelInteropTest.cs" Line="4" Column="17" />
+      <File FileName="z:\OposParser\OposParser\View\MainWindow.xaml.cs" Line="20" Column="4" />
+      <File FileName="OposParser\View\MainWindow.xaml" Line="21" Column="21" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="OposParser" expanded="True">
+            <Node name="References" expanded="True" />
+            <Node name="Logic" expanded="True" />
+            <Node name="View" expanded="True">
+              <Node name="MainWindow.xaml" expanded="True" selected="True" />
+            </Node>
+          </Node>
+          <Node name="OposTests" expanded="True">
+            <Node name="References" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
