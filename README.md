@@ -1,0 +1,4 @@
+OposParser
+==========
+
+AddIn for Excel
