@@ -31,17 +31,21 @@
   <ItemGroup>
     <Reference Include="nunit.framework">
       <HintPath>..\lib\NUnit-2.6.0.12051\bin\nunit.framework.dll</HintPath>
+      <Package>mono-nunit</Package>
     </Reference>
     <Reference Include="System" />
     <Reference Include="Moq">
       <HintPath>..\lib\Moq.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Office.Interop.Excel">
-      <HintPath>..\lib\Microsoft.Office.Interop.Excel.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExcelInteropTest.cs" />
+    <Compile Include="ExcelCellTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OposParser\OposParser.csproj">
+      <Project>{5E508751-3EA0-491B-8FEA-424FC8D5700B}</Project>
+      <Name>OposParser</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

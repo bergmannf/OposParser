@@ -2,13 +2,15 @@
 
 namespace OposParser.Logic
 {
-	/// <summary>
-	/// Description of Parser.
-	/// </summary>
-	public class Parser
-	{
-		public Parser()
-		{
-		}
-	}
+  /// <summary>
+  /// Description of Parser.
+  /// </summary>
+  public class Parser
+  {
+    public Parser()
+    {
+
+    }
+    
+  }
 }

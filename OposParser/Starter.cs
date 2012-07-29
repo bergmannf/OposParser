@@ -11,39 +11,20 @@ namespace OposParser
 	/// </summary>
 	public class Starter
 	{
-		static Application application;
 		static Window window;
-		private  delegate void UiStartDelegate();
+		static Thread appThread;
+		private delegate void UiStartDelegate ();
 		
 		/// <summary>
 		/// This is the function called from Excel to open the UI.
 		/// </summary>
-		[ExcelFunction(Description="Start the Opos-Parser UI", 
-		               Category="Useful Functions")]
-		public static void OposParser()
+		[ExcelCommand(MenuName="OposApplications", MenuText="OposParser")]
+		public static void OposParser ()
 		{
-			if (application == null) {
-				var appThread = new Thread(new ThreadStart(() =>
-                    {
-                    try {
-                        application = new Application();
-                        application.ShutdownMode = ShutdownMode.OnExplicitShutdown;
-                        application.Run();
-                    } catch (Exception e) {
-                        MessageBox.Show(e.ToString());
-                    }
-                    }));
-				appThread.SetApartmentState(ApartmentState.STA);
-				appThread.Start();
-				
-				// Make sure that the application is created before continuing.
-				while (application == null) {
-					Thread.Yield();
-				}
-			}
-
-			UiStartDelegate ui = OpenUi;
-			application.Dispatcher.Invoke(ui);
+			appThread = new Thread (OpenUi);
+			appThread.SetApartmentState (ApartmentState.STA);
+			appThread.IsBackground = true;
+			appThread.Start ();
 		}
 		
 		/// <summary>
@@ -55,15 +36,22 @@ namespace OposParser
 		/// However to allow closing and reopening of the application the windows
 		/// will be hidden when the application is "closed".
 		/// </remarks>
-		private static void OpenUi() {
-			if (window == null) {
-				window = new MainWindow();
+		private static void OpenUi ()
+		{
+			try {
+				window = new MainWindow ();
+				window.Show ();
 				window.Closing += (s, e) => {
-					window.Hide();
-					e.Cancel = true;
+					window.Dispatcher.InvokeShutdown();
 				};
+				System.Windows.Threading.Dispatcher.Run();
 			}
-			window.Show();
+			catch (InteropException e) {
+				Action x = delegate() { 
+					window.Close();
+				};
+				window.Dispatcher.Invoke(x);
+			}
 		}
 	}
 }

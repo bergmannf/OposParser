@@ -26,7 +26,13 @@ namespace OposParser
 			String endCell = this.CellToTextBox.Text;
 			String column = this.ColumnTextBox.Text;
 			ExcelInterop interop = new ExcelInterop(ExcelInterop.ActiveExcel);
-			interop.ObtainCells(column, startCell, endCell);
+			IList<object> cells = interop.ObtainCells(column, startCell, endCell);
+			Type typeOfCells = Converter.DetermineDataType(cells);
+			
+			ExcelCell newCell = new ExcelCell(5, 5, "STRING");
+			IList<ExcelCell> list = new List<ExcelCell>();
+			list.Add(newCell);
+			interop.WriteCells(list);
 		}
 	}
 }
