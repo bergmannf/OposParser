@@ -41,6 +41,9 @@
       <HintPath>..\lib\ExcelDna.Integration.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel" />
+    <Reference Include="NLog">
+      <HintPath>..\lib\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -74,5 +77,10 @@
   <ItemGroup>
     <Folder Include="View\" />
     <Folder Include="Logic\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>

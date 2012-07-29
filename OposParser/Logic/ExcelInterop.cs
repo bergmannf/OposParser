@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Microsoft.Office.Interop.Excel;
 using ExcelDna;
 using System.Runtime.InteropServices;
+using NLog;
 
 namespace OposParser
 {
@@ -13,6 +14,8 @@ namespace OposParser
 	public class ExcelInterop
 	{
 		private Application _excelApplication;
+		
+		private static Logger logger = LogManager.GetCurrentClassLogger();
 		
 		public static Application ActiveExcel {
 			get {
@@ -43,14 +46,14 @@ namespace OposParser
 		/// <param name='endRow'>
 		/// The row to stop.
 		/// </param>
-		public IList<object> ObtainCells (string column,
+		public IList<ExcelCell> ObtainCells (string column,
 		                                  string startRow,
 		                                  string endRow)
 		{
 			// Generate the start and endpoint;
 			string excelRangeStart = column + startRow;
 			string excelRangeEnd = column + endRow;
-			IList<object> cellValues = new List<object> ();
+			IList<ExcelCell> cellValues = new List<ExcelCell> ();
 			
 			Worksheet activeSheet = (Worksheet)this._excelApplication.ActiveSheet;
 			Range cells = activeSheet.get_Range (excelRangeStart, excelRangeEnd);
@@ -60,12 +63,7 @@ namespace OposParser
 					int col = cell.Column;
 					Type dataType = cell.GetType();
 					object val = cell.Value;
-					var c = new {
-						Row = row,
-						Column = col,
-						Value = val,
-						DataType = dataType
-					};
+					var c = new ExcelCell(row, col, val);
 					cellValues.Add (c);
 				}
 			}
@@ -81,14 +79,16 @@ namespace OposParser
 				
 				activeSheet = (Worksheet)this._excelApplication.ActiveSheet;
 				foreach (ExcelCell cell in cells) {
-					int row = cell.Row;
+					string row = cell.Row;
 					int column = cell.Column;
-					excelCell = activeSheet.get_Range(row, column);
+					string accessIdentifier = row + column;
+					excelCell = activeSheet.get_Range(accessIdentifier);
 					excelCell.Value2 = cell.Value;
 				}
 				
 				this._excelApplication.ScreenUpdating = true;
-			} catch (COMException) {
+			} catch (COMException e) {
+				logger.Error("COMException occured when writing cells: " + e.ToString());
 				if (excelCell != null) 
 					Marshal.ReleaseComObject(excelCell);
 				if (activeSheet != null)
@@ -106,9 +106,9 @@ namespace OposParser
 	}
 	
 	public class ExcelCell {
-		private int _row;
+		private string _row;
 		
-		public int Row {
+		public string Row {
 			get { return _row; }
 			set { _row = value; }
 		}
@@ -134,13 +134,13 @@ namespace OposParser
 		
 		public ExcelCell(int row, int column, object val)
 		{
-			Row = row;
+			Row = ConvertRowToString(row);
 			Column = column;
 			Value = val;
 		}
 		
 		private const int AsciiFirstCharacterValue = 65;
-		private const int AlphabetLength = 26;
+		private const int AlphabetLength = 27;
 		
 		/// <summary>
 		/// This method will convert an integer representation returned by
@@ -151,28 +151,19 @@ namespace OposParser
 		/// number.</param>
 		/// <returns>The string corresponding to the row.</returns>
 		public static string ConvertRowToString(int rowAsInt) {
-			if (rowAsInt <= 0)
+			if (rowAsInt <= 0) 
 				throw new ArgumentOutOfRangeException("ExcelRows start at 1.");
-			if (rowAsInt <= AlphabetLength) {
+			if (rowAsInt < AlphabetLength) {
 				char asciiValueOfInt = (char)(rowAsInt - 1 + AsciiFirstCharacterValue);
 				return Convert.ToString(asciiValueOfInt);
 			} else {
 				// Need to put characters in front
 				int prefix = rowAsInt / AlphabetLength;
-				int suffix = 0;
-				if (prefix >= AlphabetLength && suffix == 0) {
-					suffix = 26;
-					return ConvertRowToString(prefix) + ConvertRowToString(suffix);
-				}
-				suffix = rowAsInt - prefix * AlphabetLength;
-				if (suffix == 0) {
-					suffix += 1;
-				}
+				int suffix = rowAsInt - prefix * (AlphabetLength - 1);
 				return ConvertRowToString(prefix) + ConvertRowToString(suffix);
 			}
 			// Deducting 1 takes into account that Excel starts
 			// indexing at 1 and not 0.
-			
 		}
 	}
 }

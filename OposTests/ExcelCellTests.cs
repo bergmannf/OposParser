@@ -37,17 +37,17 @@ namespace OposTests
 			Assert.AreEqual(expectedString, actualString);
 			
 			row = 52;
-			expectedString = "BA";
+			expectedString = "AZ";
 			actualString = ExcelCell.ConvertRowToString(row);
 			Assert.AreEqual(expectedString, actualString);
 			
 			row = 676;
-			expectedString = "ZZ";
+			expectedString = "YZ";
 			actualString = ExcelCell.ConvertRowToString(row);
 			Assert.AreEqual(expectedString, actualString);
 			
-			row = 677;
-			expectedString = "ZZA";
+			row = 703;
+			expectedString = "AAA";
 			actualString = ExcelCell.ConvertRowToString(row);
 			Assert.AreEqual(expectedString, actualString);
 		}
