@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExcelCellTests.cs" />
+    <Compile Include="ExtensionMethodTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OposParser\OposParser.csproj">

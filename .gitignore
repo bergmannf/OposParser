@@ -11,3 +11,7 @@ lib/OposAddIn/
 
 # mstest test results
 TestResults
+/OposParser.userprefs
+/TAGS
+/OposParser/OposParser.pidb
+/OposTests/OposTests.pidb
