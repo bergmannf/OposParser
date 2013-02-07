@@ -11,7 +11,6 @@ namespace OposParser
 	/// </summary>
 	public class Starter
 	{
-		static Window window;
 		static Thread appThread;
 		private delegate void UiStartDelegate ();
 		
@@ -38,20 +37,6 @@ namespace OposParser
 		/// </remarks>
 		private static void OpenUi ()
 		{
-			try {
-				window = new MainWindow ();
-				window.Show ();
-				window.Closing += (s, e) => {
-					window.Dispatcher.InvokeShutdown();
-				};
-				System.Windows.Threading.Dispatcher.Run();
-			}
-			catch (InteropException e) {
-				Action x = delegate() { 
-					window.Close();
-				};
-				window.Dispatcher.Invoke(x);
-			}
 		}
 	}
 }

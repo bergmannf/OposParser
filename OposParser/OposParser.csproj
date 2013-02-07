@@ -40,15 +40,15 @@
     <Reference Include="ExcelDna.Integration">
       <HintPath>..\lib\ExcelDna.Integration.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Office.Interop.Excel" />
+    <Reference Include="Microsoft.Office.Interop.Excel">
+      <HintPath>..\lib\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
     <Reference Include="NLog">
       <HintPath>..\lib\NLog.dll</HintPath>
     </Reference>
     <Reference Include="NUnit.Framework">
       <HintPath>$(SharpDevelopBinPath)\Tools\NUnit\NUnit.Framework.dll</HintPath>
     </Reference>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -64,26 +64,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Logic\AdditionOperation.cs" />
-    <Compile Include="Logic\Converter.cs" />
     <Compile Include="Logic\IterTools.cs" />
     <Compile Include="Logic\Parser.cs" />
     <Compile Include="Logic\StringComparisonOperation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Starter.cs" />
-    <Compile Include="View\MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Logic\ExcelInterop.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Page Include="View\MainWindow.xaml" />
-  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
-  <ItemGroup>
-    <Folder Include="View\" />
-    <Folder Include="Logic\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

@@ -6,14 +6,14 @@ using OposParser.Logic;
 
 namespace OposTests
 {
-  [TestFixture()]
+  [TestFixture]
   public class ExcelCellTests
   {
-    [SetUp()]
+    [SetUp]
     public void SetUp () {
     }
 
-    [Test()]
+    [Test]
     public void TestConvertRow()
     {
       int row = 1;
@@ -52,7 +52,7 @@ namespace OposTests
       Assert.AreEqual(expectedString, actualString);
     }
 
-    [Test()]
+    [Test]
     [ExpectedException(typeof(ArgumentOutOfRangeException))]
     public void TestInvalidRowNumber(){
       int row = 0;
