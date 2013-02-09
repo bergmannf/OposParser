@@ -5,6 +5,7 @@ public partial class MainWindow
 {
 	private global::Gtk.UIManager UIManager;
 	private global::Gtk.VBox vbox2;
+	private global::Gtk.HBox hbox1;
 	private global::Gtk.Table table3;
 	private global::Gtk.ComboBox comboboxDatatype;
 	private global::Gtk.ComboBox comboboxTextComp;
@@ -20,6 +21,9 @@ public partial class MainWindow
 	private global::Gtk.Label labelRowEnd;
 	private global::Gtk.Label labelRowStart;
 	private global::Gtk.Label labelTextComp;
+	private global::Gtk.HButtonBox hbuttonbox2;
+	private global::Gtk.Button buttonOk;
+	private global::Gtk.Button buttonCancel;
 	private global::Gtk.Frame frame1;
 	private global::Gtk.Alignment GtkAlignment;
 	private global::Gtk.Table table4;
@@ -28,9 +32,6 @@ public partial class MainWindow
 	private global::Gtk.RadioButton radioMultiplication;
 	private global::Gtk.RadioButton radioSubtraction;
 	private global::Gtk.Label frameOperations;
-	private global::Gtk.HButtonBox hbuttonbox2;
-	private global::Gtk.Button buttonOk;
-	private global::Gtk.Button buttonCancel;
 	
 	protected virtual void Build ()
 	{
@@ -42,16 +43,24 @@ public partial class MainWindow
 		this.AddAccelGroup (this.UIManager.AccelGroup);
 		this.Name = "MainWindow";
 		this.Title = global::Mono.Unix.Catalog.GetString ("MainWindow");
+		this.TypeHint = ((global::Gdk.WindowTypeHint)(1));
 		this.WindowPosition = ((global::Gtk.WindowPosition)(4));
+		this.BorderWidth = ((uint)(5));
+		this.AllowShrink = true;
 		// Container child MainWindow.Gtk.Container+ContainerChild
 		this.vbox2 = new global::Gtk.VBox ();
 		this.vbox2.Name = "vbox2";
 		this.vbox2.Spacing = 6;
 		// Container child vbox2.Gtk.Box+BoxChild
+		this.hbox1 = new global::Gtk.HBox ();
+		this.hbox1.Name = "hbox1";
+		this.hbox1.Homogeneous = true;
+		this.hbox1.Spacing = 6;
+		// Container child hbox1.Gtk.Box+BoxChild
 		this.table3 = new global::Gtk.Table (((uint)(4)), ((uint)(4)), true);
 		this.table3.Name = "table3";
-		this.table3.RowSpacing = ((uint)(6));
-		this.table3.ColumnSpacing = ((uint)(6));
+		this.table3.RowSpacing = ((uint)(5));
+		this.table3.ColumnSpacing = ((uint)(5));
 		// Container child table3.Gtk.Table+TableChild
 		this.comboboxDatatype = global::Gtk.ComboBox.NewText ();
 		this.comboboxDatatype.Name = "comboboxDatatype";
@@ -142,6 +151,7 @@ public partial class MainWindow
 		w8.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table3.Gtk.Table+TableChild
 		this.labelColEnd = new global::Gtk.Label ();
+		this.labelColEnd.TooltipMarkup = "Wird keine Endspalte eingegeben wird nur eine Spalte genutzt.\nWird eine Endspalte angegeben wird die Operation auf die Spalten nacheinander angewendet.";
 		this.labelColEnd.Name = "labelColEnd";
 		this.labelColEnd.LabelProp = global::Mono.Unix.Catalog.GetString ("Spalte (End):");
 		this.table3.Add (this.labelColEnd);
@@ -212,11 +222,49 @@ public partial class MainWindow
 		w15.RightAttach = ((uint)(3));
 		w15.XOptions = ((global::Gtk.AttachOptions)(4));
 		w15.YOptions = ((global::Gtk.AttachOptions)(4));
-		this.vbox2.Add (this.table3);
-		global::Gtk.Box.BoxChild w16 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.table3]));
+		this.hbox1.Add (this.table3);
+		global::Gtk.Box.BoxChild w16 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.table3]));
 		w16.Position = 0;
 		w16.Expand = false;
 		w16.Fill = false;
+		this.vbox2.Add (this.hbox1);
+		global::Gtk.Box.BoxChild w17 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.hbox1]));
+		w17.Position = 0;
+		w17.Expand = false;
+		w17.Fill = false;
+		w17.Padding = ((uint)(5));
+		// Container child vbox2.Gtk.Box+BoxChild
+		this.hbuttonbox2 = new global::Gtk.HButtonBox ();
+		this.hbuttonbox2.Name = "hbuttonbox2";
+		// Container child hbuttonbox2.Gtk.ButtonBox+ButtonBoxChild
+		this.buttonOk = new global::Gtk.Button ();
+		this.buttonOk.CanFocus = true;
+		this.buttonOk.Name = "buttonOk";
+		this.buttonOk.UseStock = true;
+		this.buttonOk.UseUnderline = true;
+		this.buttonOk.Label = "gtk-cancel";
+		this.hbuttonbox2.Add (this.buttonOk);
+		global::Gtk.ButtonBox.ButtonBoxChild w18 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.hbuttonbox2 [this.buttonOk]));
+		w18.Expand = false;
+		w18.Fill = false;
+		// Container child hbuttonbox2.Gtk.ButtonBox+ButtonBoxChild
+		this.buttonCancel = new global::Gtk.Button ();
+		this.buttonCancel.CanFocus = true;
+		this.buttonCancel.Name = "buttonCancel";
+		this.buttonCancel.UseStock = true;
+		this.buttonCancel.UseUnderline = true;
+		this.buttonCancel.Label = "gtk-ok";
+		this.hbuttonbox2.Add (this.buttonCancel);
+		global::Gtk.ButtonBox.ButtonBoxChild w19 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.hbuttonbox2 [this.buttonCancel]));
+		w19.Position = 1;
+		w19.Expand = false;
+		w19.Fill = false;
+		this.vbox2.Add (this.hbuttonbox2);
+		global::Gtk.Box.BoxChild w20 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.hbuttonbox2]));
+		w20.PackType = ((global::Gtk.PackType)(1));
+		w20.Position = 1;
+		w20.Expand = false;
+		w20.Fill = false;
 		// Container child vbox2.Gtk.Box+BoxChild
 		this.frame1 = new global::Gtk.Frame ();
 		this.frame1.Name = "frame1";
@@ -240,8 +288,8 @@ public partial class MainWindow
 		this.radioAddition.UseUnderline = true;
 		this.radioAddition.Group = new global::GLib.SList (global::System.IntPtr.Zero);
 		this.table4.Add (this.radioAddition);
-		global::Gtk.Table.TableChild w17 = ((global::Gtk.Table.TableChild)(this.table4 [this.radioAddition]));
-		w17.YOptions = ((global::Gtk.AttachOptions)(4));
+		global::Gtk.Table.TableChild w21 = ((global::Gtk.Table.TableChild)(this.table4 [this.radioAddition]));
+		w21.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table4.Gtk.Table+TableChild
 		this.radioDivision = new global::Gtk.RadioButton (global::Mono.Unix.Catalog.GetString ("Dividieren"));
 		this.radioDivision.CanFocus = true;
@@ -250,12 +298,12 @@ public partial class MainWindow
 		this.radioDivision.UseUnderline = true;
 		this.radioDivision.Group = this.radioAddition.Group;
 		this.table4.Add (this.radioDivision);
-		global::Gtk.Table.TableChild w18 = ((global::Gtk.Table.TableChild)(this.table4 [this.radioDivision]));
-		w18.TopAttach = ((uint)(1));
-		w18.BottomAttach = ((uint)(2));
-		w18.LeftAttach = ((uint)(1));
-		w18.RightAttach = ((uint)(2));
-		w18.YOptions = ((global::Gtk.AttachOptions)(4));
+		global::Gtk.Table.TableChild w22 = ((global::Gtk.Table.TableChild)(this.table4 [this.radioDivision]));
+		w22.TopAttach = ((uint)(1));
+		w22.BottomAttach = ((uint)(2));
+		w22.LeftAttach = ((uint)(1));
+		w22.RightAttach = ((uint)(2));
+		w22.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table4.Gtk.Table+TableChild
 		this.radioMultiplication = new global::Gtk.RadioButton (global::Mono.Unix.Catalog.GetString ("Multiplizieren"));
 		this.radioMultiplication.CanFocus = true;
@@ -264,10 +312,10 @@ public partial class MainWindow
 		this.radioMultiplication.UseUnderline = true;
 		this.radioMultiplication.Group = this.radioAddition.Group;
 		this.table4.Add (this.radioMultiplication);
-		global::Gtk.Table.TableChild w19 = ((global::Gtk.Table.TableChild)(this.table4 [this.radioMultiplication]));
-		w19.TopAttach = ((uint)(1));
-		w19.BottomAttach = ((uint)(2));
-		w19.YOptions = ((global::Gtk.AttachOptions)(4));
+		global::Gtk.Table.TableChild w23 = ((global::Gtk.Table.TableChild)(this.table4 [this.radioMultiplication]));
+		w23.TopAttach = ((uint)(1));
+		w23.BottomAttach = ((uint)(2));
+		w23.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table4.Gtk.Table+TableChild
 		this.radioSubtraction = new global::Gtk.RadioButton (global::Mono.Unix.Catalog.GetString ("Subtrahieren"));
 		this.radioSubtraction.CanFocus = true;
@@ -276,57 +324,31 @@ public partial class MainWindow
 		this.radioSubtraction.UseUnderline = true;
 		this.radioSubtraction.Group = this.radioAddition.Group;
 		this.table4.Add (this.radioSubtraction);
-		global::Gtk.Table.TableChild w20 = ((global::Gtk.Table.TableChild)(this.table4 [this.radioSubtraction]));
-		w20.LeftAttach = ((uint)(1));
-		w20.RightAttach = ((uint)(2));
-		w20.YOptions = ((global::Gtk.AttachOptions)(4));
+		global::Gtk.Table.TableChild w24 = ((global::Gtk.Table.TableChild)(this.table4 [this.radioSubtraction]));
+		w24.LeftAttach = ((uint)(1));
+		w24.RightAttach = ((uint)(2));
+		w24.YOptions = ((global::Gtk.AttachOptions)(4));
 		this.GtkAlignment.Add (this.table4);
 		this.frame1.Add (this.GtkAlignment);
 		this.frameOperations = new global::Gtk.Label ();
-		this.frameOperations.WidthRequest = 90;
-		this.frameOperations.HeightRequest = 56;
+		this.frameOperations.WidthRequest = 95;
+		this.frameOperations.HeightRequest = 43;
 		this.frameOperations.Name = "frameOperations";
 		this.frameOperations.LabelProp = global::Mono.Unix.Catalog.GetString ("<b>Operationen:</b>");
 		this.frameOperations.UseMarkup = true;
 		this.frame1.LabelWidget = this.frameOperations;
 		this.vbox2.Add (this.frame1);
-		global::Gtk.Box.BoxChild w23 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.frame1]));
-		w23.Position = 1;
-		// Container child vbox2.Gtk.Box+BoxChild
-		this.hbuttonbox2 = new global::Gtk.HButtonBox ();
-		this.hbuttonbox2.Name = "hbuttonbox2";
-		// Container child hbuttonbox2.Gtk.ButtonBox+ButtonBoxChild
-		this.buttonOk = new global::Gtk.Button ();
-		this.buttonOk.CanFocus = true;
-		this.buttonOk.Name = "buttonOk";
-		this.buttonOk.UseStock = true;
-		this.buttonOk.UseUnderline = true;
-		this.buttonOk.Label = "gtk-cancel";
-		this.hbuttonbox2.Add (this.buttonOk);
-		global::Gtk.ButtonBox.ButtonBoxChild w24 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.hbuttonbox2 [this.buttonOk]));
-		w24.Expand = false;
-		w24.Fill = false;
-		// Container child hbuttonbox2.Gtk.ButtonBox+ButtonBoxChild
-		this.buttonCancel = new global::Gtk.Button ();
-		this.buttonCancel.CanFocus = true;
-		this.buttonCancel.Name = "buttonCancel";
-		this.buttonCancel.UseStock = true;
-		this.buttonCancel.UseUnderline = true;
-		this.buttonCancel.Label = "gtk-ok";
-		this.hbuttonbox2.Add (this.buttonCancel);
-		global::Gtk.ButtonBox.ButtonBoxChild w25 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.hbuttonbox2 [this.buttonCancel]));
-		w25.Position = 1;
-		w25.Expand = false;
-		w25.Fill = false;
-		this.vbox2.Add (this.hbuttonbox2);
-		global::Gtk.Box.BoxChild w26 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.hbuttonbox2]));
-		w26.Position = 2;
+		global::Gtk.Box.BoxChild w27 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.frame1]));
+		w27.PackType = ((global::Gtk.PackType)(1));
+		w27.Position = 2;
+		w27.Expand = false;
+		w27.Fill = false;
 		this.Add (this.vbox2);
 		if ((this.Child != null)) {
 			this.Child.ShowAll ();
 		}
-		this.DefaultWidth = 674;
-		this.DefaultHeight = 490;
+		this.DefaultWidth = 713;
+		this.DefaultHeight = 285;
 		this.Show ();
 		this.buttonOk.Clicked += new global::System.EventHandler (this.CancelButtonClicked);
 	}
