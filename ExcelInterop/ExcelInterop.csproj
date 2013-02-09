@@ -1,14 +1,14 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{16280A99-736E-44F9-A2F9-92566538FE17}</ProjectGuid>
+    <ProjectGuid>{56CB0658-83B4-472C-8223-E4003C6EE36A}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>OposTests</RootNamespace>
-    <AssemblyName>OposTests</AssemblyName>
+    <RootNamespace>ExcelInterop</RootNamespace>
+    <AssemblyName>ExcelInterop</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
@@ -29,23 +29,29 @@
     <ConsolePause>False</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework">
-      <HintPath>..\lib\NUnit-2.6.0.12051\bin\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="Moq">
-      <HintPath>..\lib\Moq.dll</HintPath>
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Core" />
+    <Reference Include="ExcelDna.Integration">
+      <HintPath>..\lib\ExcelDna.Integration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel">
+      <HintPath>..\lib\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\lib\NLog.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExcelCellTests.cs" />
-    <Compile Include="ExtensionMethodTests.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="ExcelDatasource.cs" />
+    <Compile Include="ExcelCell.cs" />
   </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\OposParser\OposParser.csproj">
       <Project>{5E508751-3EA0-491B-8FEA-424FC8D5700B}</Project>
       <Name>OposParser</Name>
     </ProjectReference>
   </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
