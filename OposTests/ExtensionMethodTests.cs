@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 using NUnit.Framework;
 using OposParser;
 using OposParser.Logic;
+using ExcelInterop;
 
 namespace OposTests
 {

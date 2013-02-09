@@ -3,6 +3,7 @@ using NUnit.Framework;
 using Moq;
 using OposParser;
 using OposParser.Logic;
+using ExcelInterop;
 
 namespace OposTests
 {

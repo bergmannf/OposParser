@@ -84,7 +84,7 @@ namespace ExcelInterop
 
   
 
-    public void WriteCells(IList<ExcelCell<object>> cells) {
+    public void WriteCells(IList<ICell<object>> cells) {
       Worksheet activeSheet = null;
       Range excelCell = null;
       try {

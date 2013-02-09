@@ -29,12 +29,12 @@
     <ConsolePause>False</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework">
-      <HintPath>..\lib\NUnit-2.6.0.12051\bin\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="Moq">
       <HintPath>..\lib\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.6.0.12051, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -45,6 +45,10 @@
     <ProjectReference Include="..\OposParser\OposParser.csproj">
       <Project>{5E508751-3EA0-491B-8FEA-424FC8D5700B}</Project>
       <Name>OposParser</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ExcelInterop\ExcelInterop.csproj">
+      <Project>{56CB0658-83B4-472C-8223-E4003C6EE36A}</Project>
+      <Name>ExcelInterop</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

@@ -8,8 +8,6 @@ namespace OposStarter
 {
 	public class Program
 	{
-		public static Thread uiThread;
-		
 		public static void Main()
 		{
 			Starter.OposParser();
