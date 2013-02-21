@@ -6,11 +6,12 @@ using OposParser;
 
 namespace OposStarter
 {
-	public class Program
-	{
-		public static void Main()
-		{
-			Starter.OposParser();
-		}
-	}
+        public class Program
+        {
+                public static void Main ()
+                {
+                        Starter.OposParser ();
+                        Thread.Sleep (10000);
+                }
+        }
 }
