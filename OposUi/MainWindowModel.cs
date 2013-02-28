@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using OposParser.Logic;
+using OposParser.Interface;
 
 namespace OposUi
 {
@@ -23,9 +24,9 @@ namespace OposUi
                         }
                 }
                 
-                private IList<Operation> _availableComparisonOperations;
+                private IList<IOperation> _availableComparisonOperations;
 
-                public IList<Operation> AvailableComparisonOperations {
+                public IList<IOperation> AvailableComparisonOperations {
                         get {
                                 return _availableComparisonOperations;
                         }

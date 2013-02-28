@@ -1,10 +1,14 @@
 using System;
 
-namespace OposParser
+namespace OposParser.Interface
 {
-        public interface IOperation<T>
+        /// <summary>
+        /// Operation interface to inherit for all operations performable
+        /// to the Cells.
+        /// </summary>
+        public interface IOperation
         {
-                ICell<T> Execute (ICell<T> c1, ICell<T> c2);
+                ICell Execute (ICell c1, ICell c2);
         }
 }
 

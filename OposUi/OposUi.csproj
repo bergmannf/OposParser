@@ -66,11 +66,11 @@
   <ItemGroup>
     <Compile Include="gtk-gui\generated.cs" />
     <Compile Include="MainWindow.cs" />
-    <Compile Include="gtk-gui\MainWindow.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="UiMain.cs" />
     <Compile Include="MainWindowController.cs" />
     <Compile Include="MainWindowModel.cs" />
+    <Compile Include="gtk-gui\OposUi.MainWindow.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace OposParser
+namespace OposParser.Interface
 {
         /// <summary>
         /// Abstraction to the SpreadSheetDataSource.
@@ -38,7 +38,7 @@ namespace OposParser
                 /// <param name='cells'>
                 /// Cells.
                 /// </param>
-                void WriteCells (IList<ICell<object>> cells);
+                void WriteCells (IList<ICell> cells);
         }
 }
 

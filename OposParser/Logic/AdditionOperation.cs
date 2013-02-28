@@ -1,28 +1,23 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using OposParser.Interface;
 
 namespace OposParser.Logic
 {
-        public class AdditionOperation
+        public class AdditionOperation: IOperation
         {
-#region Ctor & Destructor
-                /// <summary>
-                /// Creates an addition operation.
-                /// </summary>
-                public AdditionOperation ()
+                #region IOperation implementation
+
+                public ICell Execute (ICell c1, ICell c2)
                 {
-                }
-#endregion
-    
-                /// <summary>
-                /// Description
-                /// </summary>
-                public void Execute (int previousValue, int currentValue)
-                {
-                        IEnumerable<int> numbers = new List<int> ();
-                        numbers.Sum ();
+                        throw new NotImplementedException ();
                 }
 
+                #endregion
+                
+                public INumericCell Add (INumericCell c1, INumericCell c2)
+                {
+                        return c1.Add (c2);
+                }
         }
 }
+

@@ -6,7 +6,7 @@ using Microsoft.Office.Interop.Excel;
 using ExcelDna;
 using System.Runtime.InteropServices;
 using NLog;
-using OposParser;
+using OposParser.Interface;
 
 namespace ExcelInterop
 {
@@ -55,29 +55,24 @@ namespace ExcelInterop
                         // Generate the start and endpoint;
                         string excelRangeStart = column + startRow;
                         string excelRangeEnd = column + endRow;
-                        IList cellValues = new List<ExcelCell<object>> ();
+                        IList cellValues = new List<ExcelCell> ();
 
                         Worksheet activeSheet = (Worksheet)this._excelApplication.ActiveSheet;
                         Range cells = activeSheet.get_Range (excelRangeStart, excelRangeEnd);
                         if (cells != null) {
                                 Type t = DetermineDataType (cells);
-                                if (t == typeof(int) ||
-                                        t == typeof(double)) {
-                                        cellValues = CreateDoubleCells (cells);
-                                } else if (t == typeof(string)) {
-                                        cellValues = CreateStringCells (cells);
-                                } else if (t == typeof(DateTime)) {
-                                        cellValues = CreateDateTimeCells (cells);
-                                } else {
-                                        throw new ArgumentException ("The major amount of cells can not be processed " +
-                                                "by the application."
-                                        );
+                                foreach (Range cell in cells.Cells) {
+                                        int row = cell.Row;
+                                        int col = cell.Column;
+                                        object val = cell.Value;
+                                        ExcelCell c = new ExcelCell (row, col, val);
+                                        cellValues.Add (c);
                                 }
                         }
                         return cellValues;
                 }
 
-                public void WriteCells (IList<ICell<object>> cells)
+                public void WriteCells (IList<ICell> cells)
                 {
                         Worksheet activeSheet = null;
                         Range excelCell = null;
@@ -86,7 +81,7 @@ namespace ExcelInterop
                                 this._excelApplication.ScreenUpdating = false;
 
                                 activeSheet = (Worksheet)this._excelApplication.ActiveSheet;
-                                foreach (ExcelCell<object> cell in cells) {
+                                foreach (ExcelCell cell in cells) {
                                         string row = cell.Row;
                                         int column = cell.Column;
                                         string accessIdentifier = row + column;
@@ -106,46 +101,7 @@ namespace ExcelInterop
                                 throw new InteropException ("Something crashed in Excel.");
                         }
                 }
-
-                private static IList CreateDateTimeCells (Range cells)
-                {
-                        IList datetimeCells = new List<ExcelCell<DateTime>> ();
-                        foreach (Range cell in cells.Cells) {
-                                int row = cell.Row;
-                                int col = cell.Column;
-                                object val = cell.Value;
-                                var c = ExcelCell<DateTime>.Create (row, col, val);
-                                datetimeCells.Add (c);
-                        }
-                        return datetimeCells;
-                }
-    
-                private static IList CreateStringCells (Range cells)
-                {
-                        IList stringCells = new List<ExcelCell<string>> ();
-                        foreach (Range cell in cells.Cells) {
-                                int row = cell.Row;
-                                int col = cell.Column;
-                                object val = cell.Value;
-                                var c = ExcelCell<string>.Create (row, col, val);
-                                stringCells.Add (c);
-                        }
-                        return stringCells;
-                }
-    
-                private static IList CreateDoubleCells (Range cells)
-                {
-                        IList doubleCells = new List<ExcelCell<double>> ();
-                        foreach (Range cell in cells.Cells) {
-                                int row = cell.Row;
-                                int col = cell.Column;
-                                object val = cell.Value;
-                                var c = ExcelCell<double>.Create (row, col, val);
-                                doubleCells.Add (c);
-                        }
-                        return doubleCells;
-                }
-
+                
                 /// <summary>
                 /// Returns the type that is used most often in a range of cells.
                 /// </summary>

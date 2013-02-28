@@ -57,7 +57,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Logic\AdditionOperation.cs" />
     <Compile Include="Logic\IterTools.cs" />
     <Compile Include="Logic\Parser.cs" />
     <Compile Include="Logic\StringComparisonOperation.cs" />
@@ -65,6 +64,9 @@
     <Compile Include="Interface\ISpreadSheetData.cs" />
     <Compile Include="Interface\ICell.cs" />
     <Compile Include="Interface\IOperation.cs" />
+    <Compile Include="Interface\IComparableCell.cs" />
+    <Compile Include="Interface\INumericCell.cs" />
+    <Compile Include="Logic\AdditionOperation.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
   <ItemGroup />

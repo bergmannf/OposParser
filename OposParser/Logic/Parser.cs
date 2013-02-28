@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
+using OposParser.Interface;
 
 namespace OposParser.Logic
 {
@@ -19,14 +21,14 @@ namespace OposParser.Logic
                         _dataSource = dataSource;
                 }
                 
-                public IList<ICell<object>> GetCells (string column,
+                public IList GetCells (string column,
                                               string startRow,
                                               string endRow)
                 {
                         return _dataSource.GetCells (column, startRow, endRow);
                 }
                 
-                public void WriteCells (IList<ICell<object>> cells)
+                public void WriteCells (IList<ICell> cells)
                 {
                         _dataSource.WriteCells (cells);
                 }
@@ -40,9 +42,9 @@ namespace OposParser.Logic
                 /// <param name="op">Operation to apply.</param>
                 /// <param name="cells">Cells to apply the operation to.</param>
                 /// <param name="condition">Condition to fulfill.</param>
-                public IList<ICell<object>> ApplyOperationToRange (IOperation op,
-                                                                   IList<ICell<object>> cells,
-                                                                   string condition)
+                public IList<ICell> ApplyOperationToRange (IOperation op,
+                                                           IList<ICell> cells,
+                                                           string condition)
                 {
                         throw new NotImplementedException ();
                 }
