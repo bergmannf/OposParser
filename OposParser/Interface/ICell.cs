@@ -8,11 +8,11 @@ namespace OposParser.Interface
         /// </summary>
         public interface ICell
         {
-                string Row { get; set; }
-
-                int Column { get; set; }
-
                 object Value { get; set; }
+
+                int Row { get; set; }
+
+                string Column { get; set; }
         }
 }
 

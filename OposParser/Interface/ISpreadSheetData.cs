@@ -29,7 +29,7 @@ namespace OposParser.Interface
                 /// <param name='endRow'>
                 /// The end row.
                 /// </param>
-                IList GetCells (string column,
+                IList<ICell> GetCells (string column,
 		                          string startRow,
 		                          string endRow);
                 /// <summary>

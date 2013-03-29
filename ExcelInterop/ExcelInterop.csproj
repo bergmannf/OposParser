@@ -47,6 +47,7 @@
     <Compile Include="ExcelDatasource.cs" />
     <Compile Include="ExcelCell.cs" />
     <Compile Include="NumericCell.cs" />
+    <Compile Include="ComparableExcelCell.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

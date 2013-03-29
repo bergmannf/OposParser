@@ -21,7 +21,7 @@ namespace OposParser.Logic
                         _dataSource = dataSource;
                 }
                 
-                public IList GetCells (string column,
+                public IList<ICell> GetCells (string column,
                                               string startRow,
                                               string endRow)
                 {

@@ -48,14 +48,14 @@ namespace ExcelInterop
                 /// <param name='endRow'>
                 /// The row to stop.
                 /// </param>
-                public IList GetCells (string column,
-                              string startRow,
-                              string endRow)
+                public IList<ICell> GetCells (string column,
+                                       string startRow,
+                                       string endRow)
                 {
                         // Generate the start and endpoint;
                         string excelRangeStart = column + startRow;
                         string excelRangeEnd = column + endRow;
-                        IList cellValues = new List<ExcelCell> ();
+                        IList<ICell> cellValues = new List<ICell> ();
 
                         Worksheet activeSheet = (Worksheet)this._excelApplication.ActiveSheet;
                         Range cells = activeSheet.get_Range (excelRangeStart, excelRangeEnd);
@@ -65,7 +65,7 @@ namespace ExcelInterop
                                         int row = cell.Row;
                                         int col = cell.Column;
                                         object val = cell.Value;
-                                        ExcelCell c = new ExcelCell (row, col, val);
+                                        ICell c = ExcelCell.CreateCell (val, row, col);
                                         cellValues.Add (c);
                                 }
                         }
@@ -81,9 +81,9 @@ namespace ExcelInterop
                                 this._excelApplication.ScreenUpdating = false;
 
                                 activeSheet = (Worksheet)this._excelApplication.ActiveSheet;
-                                foreach (ExcelCell cell in cells) {
-                                        string row = cell.Row;
-                                        int column = cell.Column;
+                                foreach (ICell cell in cells) {
+                                        string column = cell.Column;
+                                        int row = cell.Row;
                                         string accessIdentifier = row + column;
                                         excelCell = activeSheet.get_Range (accessIdentifier);
                                         excelCell.Value2 = cell.Value;
