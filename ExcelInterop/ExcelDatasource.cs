@@ -60,7 +60,6 @@ namespace ExcelInterop
                         Worksheet activeSheet = (Worksheet)this._excelApplication.ActiveSheet;
                         Range cells = activeSheet.get_Range (excelRangeStart, excelRangeEnd);
                         if (cells != null) {
-                                Type t = DetermineDataType (cells);
                                 foreach (Range cell in cells.Cells) {
                                         int row = cell.Row;
                                         int col = cell.Column;

@@ -39,7 +39,8 @@ namespace ExcelInterop
                 /// <param name="value">Value.</param>
                 /// <param name="column">Column.</param>
                 /// <param name="row">Row.</param>
-                public ComparableExcelCell (object value, int column, int row)
+                public ComparableExcelCell (object value, int column, int row):
+                        this(value, ExcelCell.ConvertColumnToString(column), row)
                 {
                 }
 

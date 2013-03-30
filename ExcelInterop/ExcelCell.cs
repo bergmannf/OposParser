@@ -44,6 +44,8 @@ namespace ExcelInterop
                         if (rowAsInt <= 0)
                                 throw new ArgumentOutOfRangeException ("ExcelColumns start at 1.");
                         if (rowAsInt < AlphabetLength) {
+                                // Deducting 1 takes into account that Excel starts
+                                // indexing at 1 and not 0.
                                 char asciiValueOfInt = (char)(rowAsInt - 1 + AsciiFirstCharacterValue);
                                 return Convert.ToString (asciiValueOfInt);
                         } else {
@@ -52,8 +54,6 @@ namespace ExcelInterop
                                 int suffix = rowAsInt - prefix * (AlphabetLength - 1);
                                 return ConvertColumnToString (prefix) + ConvertColumnToString (suffix);
                         }
-                        // Deducting 1 takes into account that Excel starts
-                        // indexing at 1 and not 0.
                 }
 		
                 /// <summary>
@@ -69,6 +69,14 @@ namespace ExcelInterop
                                 val.GetType () == typeof(double));
                 }
 
+                /// <summary>
+                /// Return a cell of the correct subtype for the passed
+                /// type of value.
+                /// </summary>
+                /// <returns>The cell.</returns>
+                /// <param name="value">Value.</param>
+                /// <param name="column">Column.</param>
+                /// <param name="row">Row.</param>
                 public static ICell CreateCell(object value, int column, int row) {
                         if (IsNumeric (value)) {
                                 return new NumericCell ((double)value, column, row);

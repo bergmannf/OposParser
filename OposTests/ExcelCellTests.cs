@@ -1,6 +1,7 @@
 using System;
 using NUnit.Framework;
 using ExcelInterop;
+using OposParser.Interface;
 
 namespace OposTests
 {
@@ -13,50 +14,58 @@ namespace OposTests
                 }
 
                 [Test]
-                public void TestConvertRow ()
+                public void TestCorrectCellType() {
+                        ICell numericCell = ExcelCell.CreateCell (5.0, 1, 2);
+                        Assert.AreSame (typeof(NumericCell), numericCell.GetType());
+                        ICell someOtherCell = ExcelCell.CreateCell ("string", 1, 2);
+                        Assert.AreEqual (typeof(ComparableExcelCell), someOtherCell.GetType ());
+                }
+
+                [Test]
+                public void TestConvertcolumn ()
                 {
-                        int row = 1;
+                        int column = 1;
                         string expectedString = "A";
-                        string actualString = ExcelCell.ConvertColumnToString (row);
+                        string actualString = ExcelCell.ConvertColumnToString (column);
                         Assert.AreEqual (expectedString, actualString.ToUpper ());
 
-                        row = 2;
+                        column = 2;
                         expectedString = "B";
-                        actualString = ExcelCell.ConvertColumnToString (row);
+                        actualString = ExcelCell.ConvertColumnToString (column);
                         Assert.AreEqual (expectedString, actualString.ToUpper ());
 
-                        row = 26;
+                        column = 26;
                         expectedString = "Z";
-                        actualString = ExcelCell.ConvertColumnToString (row);
+                        actualString = ExcelCell.ConvertColumnToString (column);
                         Assert.AreEqual (expectedString, actualString);
 
-                        row = 27;
+                        column = 27;
                         expectedString = "AA";
-                        actualString = ExcelCell.ConvertColumnToString (row);
+                        actualString = ExcelCell.ConvertColumnToString (column);
                         Assert.AreEqual (expectedString, actualString);
 
-                        row = 52;
+                        column = 52;
                         expectedString = "AZ";
-                        actualString = ExcelCell.ConvertColumnToString (row);
+                        actualString = ExcelCell.ConvertColumnToString (column);
                         Assert.AreEqual (expectedString, actualString);
 
-                        row = 676;
+                        column = 676;
                         expectedString = "YZ";
-                        actualString = ExcelCell.ConvertColumnToString (row);
+                        actualString = ExcelCell.ConvertColumnToString (column);
                         Assert.AreEqual (expectedString, actualString);
 
-                        row = 703;
+                        column = 703;
                         expectedString = "AAA";
-                        actualString = ExcelCell.ConvertColumnToString (row);
+                        actualString = ExcelCell.ConvertColumnToString (column);
                         Assert.AreEqual (expectedString, actualString);
                 }
 
                 [Test]
                 [ExpectedException(typeof(ArgumentOutOfRangeException))]
-                public void TestInvalidRowNumber ()
+                public void TestInvalidcolumnNumber ()
                 {
-                        int row = 0;
-                        ExcelCell.ConvertColumnToString (row);
+                        int column = 0;
+                        ExcelCell.ConvertColumnToString (column);
                 }
         }
 }

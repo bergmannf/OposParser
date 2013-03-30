@@ -95,24 +95,9 @@ namespace ExcelInterop
 
                 #region ICell implementation
 
-                public int Row {
-                        get {
-                                throw new NotImplementedException ();
-                        }
-                        set {
-                                throw new NotImplementedException ();
-                        }
-                }
+                public int Row { get; set; }
 
-                public string Column {
-                        get {
-                                throw new NotImplementedException ();
-                        }
-                        set {
-                                throw new NotImplementedException ();
-                        }
-                }
-
+                public string Column { get; set; }
 
                 #endregion
         }
