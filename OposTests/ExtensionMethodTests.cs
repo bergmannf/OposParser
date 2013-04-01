@@ -28,72 +28,93 @@ namespace OposTests
                 }
 
                 [Test]
-                public void TestApplyUntilExcelCell ()
-                {
-                        ICollection<INumericCell> cells = new List<INumericCell>{
-                                new NumericCell(1, 1, 1),
-                                new NumericCell(1, 2, 2),
-                                new NumericCell(2 ,1, 3)
-                        };
-                        var c = IterTools.PartiallyApply<INumericCell, bool> (IterToolTestAdditions.GreaterEqual,
-                                                                      new NumericCell (10.0, 999, 999));
-                        Func<INumericCell, INumericCell, INumericCell> f = IterToolTestAdditions.Add;
-                        var cell = IterTools.ApplyUntil<INumericCell> (cells,
-                                                               f,
-                                                               c);
-                        Assert.AreEqual (cell.Item1.Value, 4);
-                }
-
-                [Test]
                 public void TestApplyUntilNonGenericReference ()
                 {
                         ICollection<INumericCell> castCells = null;
-                        IList<ICell> cells = new List<ICell>{ 
-                                new NumericCell(1, 1, 1),
-                                new NumericCell(1, 2, 2),
-                                new NumericCell(2 ,1, 3)
-                        };
-                        if (cells [0] is INumericCell ) {
+                        ICollection<ICell> cells = NumericTestCells ();
+                        if (cells.First() is INumericCell ) {
                                 var tmpEnum = (from cl in cells
                                                select (INumericCell) cl);
                                 castCells = tmpEnum.ToList();
                         }
-                        var c = IterTools.PartiallyApply<INumericCell, bool> (IterToolTestAdditions.GreaterEqual,
-                                                                      new NumericCell (10.0, 999, 999));
+                        var c = GreaterThanCondition (10);
                         Func<INumericCell, INumericCell, INumericCell> f = IterToolTestAdditions.Add;
                         var cell = IterTools.ApplyUntil<INumericCell> (castCells,
                                                                f,
                                                                c);
                         Assert.AreEqual (cell.Item1.Value, 4);
                 }
-        }
 
-        public static class IterToolTestAdditions
-        {
-
-                public static int Add (int number, int number2)
-                {
-                        return number + number2;
-                }
-
-                public static INumericCell Add (INumericCell c1,
-                                                INumericCell c2)
-                {
-                        return c1.Add (c2);
-                }
-
-                public static bool GreaterEqual (int number, int comparison)
-                {
-                        if (number >= comparison) {
-                                return true;
+                [Test]
+                public void TestOposParserOperations () {
+                        // SETUP
+                        ICollection<INumericCell> castCells = null;
+                        ICollection<ICell> cells = NumericTestCells ();
+                        if (cells.First() is INumericCell ) {
+                                var tmpEnum = (from cl in cells
+                                               select (INumericCell) cl);
+                                castCells = tmpEnum.ToList();
                         }
-                        return false;
+                        var condition = GreaterThanCondition (10);
+
+                        // TESTS and ASSERTS
+                        Func<INumericCell, INumericCell, INumericCell> f = Operations.Add;
+                        var cell = IterTools.ApplyUntil<INumericCell> (castCells,
+                                                                       f,
+                                                                       condition);
+                        Assert.AreEqual (cell.Item1.Value, 4);
+
+                        cell = IterTools.ApplyUntil<INumericCell> (castCells,
+                                                                   Operations.Multiply,
+                                                                   condition);
+                        Assert.AreEqual (2, cell.Item1.Value);
+
+                        cell = IterTools.ApplyUntil<INumericCell> (castCells,
+                                                                   Operations.Divide,
+                                                                   condition);
+                        Assert.AreEqual (0.5, cell.Item1.Value);
+
+                        cell = IterTools.ApplyUntil<INumericCell> (castCells,
+                                                                   Operations.Substract,
+                                                                   condition);
+                        Assert.AreEqual (-2, cell.Item1.Value);
                 }
 
-                public static bool GreaterEqual (INumericCell c1,
-                                                 INumericCell comparison)
+                [Test]
+                public void TestArithmeticOperationsWithConditionHit () {
+                        ICollection<INumericCell> castCells = null;
+                        ICollection<ICell> cells = NumericTestCells ();
+                        if (cells.First() is INumericCell ) {
+                                var tmpEnum = (from cl in cells
+                                               select (INumericCell) cl);
+                                castCells = tmpEnum.ToList();
+                        }
+                        Func<INumericCell, bool> condition = Comparators.GreaterEqual(2);
+                        Func<INumericCell, INumericCell, INumericCell> f = Operations.Add;
+                        var cell = IterTools.ApplyUntil<INumericCell> (castCells,
+                                                                       f,
+                                                                       condition);
+                        Assert.AreEqual (2, cell.Item2.Value);
+                        Assert.AreEqual (1, cell.Item1.Value);
+                        Assert.AreEqual (2, cell.Item1.Row);
+                        Assert.AreEqual ("B", cell.Item1.Column);
+                }
+
+                static ICollection<ICell> NumericTestCells ()
                 {
-                        return c1.NumericValue > comparison.NumericValue;
+                        ICollection<ICell> cells = new List<ICell> {
+                                new NumericCell (1, 1, 1),
+                                new NumericCell (1, 2, 2),
+                                new NumericCell (2, 1, 3)
+                        };
+                        return cells;
+                }
+
+                static Func<INumericCell, bool> GreaterThanCondition (int c)
+                {
+                        return IterTools.PartiallyApply<INumericCell, bool> (IterToolTestAdditions.GreaterEqual,
+                                                                             new NumericCell (c, int.MaxValue, int.MaxValue));
                 }
         }
+
 }

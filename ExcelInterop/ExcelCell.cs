@@ -27,6 +27,16 @@ namespace ExcelInterop
                         get { return _value; }
                         set { _value = value; }
                 }
+
+                protected string HigherColumn (INumericCell otherCell)
+                {
+                        return this.Column.CompareTo (otherCell.Column) > 0 ? this.Column : otherCell.Column;
+                }
+                
+                protected int HigherRow (INumericCell otherCell)
+                {
+                        return this.Row > otherCell.Row ? this.Row : otherCell.Row;
+                }
 		
                 private const int AsciiFirstCharacterValue = 65;
                 private const int AlphabetLength = 27;

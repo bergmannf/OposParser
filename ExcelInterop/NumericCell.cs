@@ -3,9 +3,9 @@ using OposParser.Interface;
 
 namespace ExcelInterop
 {
-        public class NumericCell: INumericCell
+        public class NumericCell: ExcelCell, INumericCell
         {
-                public object Value {
+                public new object Value {
                         get {
                                 return this.NumericValue;
                         }
@@ -52,25 +52,37 @@ namespace ExcelInterop
                 public INumericCell Add (INumericCell c1)
                 {
                         double newValue = this.NumericValue + c1.NumericValue;
-                        string newColumn = this.Column.CompareTo(c1.Column) > 0 ? this.Column : c1.Column; 
-                        int newRow = this.Row > c1.Row ? this.Row : c1.Row;
+                        string newColumn = this.HigherColumn (c1);
+                        int newRow = HigherRow (c1);
                         INumericCell result = new NumericCell (newValue, newColumn, newRow);
                         return result;
                 }
 
                 public INumericCell Substract (INumericCell c1)
                 {
-                        throw new NotImplementedException ();
+                        double newValue = this.NumericValue - c1.NumericValue;
+                        string newColumn = HigherColumn (c1); 
+                        int newRow = HigherRow (c1);
+                        INumericCell result = new NumericCell (newValue, newColumn, newRow);
+                        return result;
                 }
 
                 public INumericCell Multiply (INumericCell c1)
                 {
-                        throw new NotImplementedException ();
+                        double newValue = this.NumericValue * c1.NumericValue;
+                        string newColumn = HigherColumn (c1); 
+                        int newRow = HigherRow (c1);
+                        INumericCell result = new NumericCell (newValue, newColumn, newRow);
+                        return result;
                 }
 
                 public INumericCell Divide (INumericCell c1)
                 {
-                        throw new NotImplementedException ();
+                        double newValue = this.NumericValue / c1.NumericValue;
+                        string newColumn = HigherColumn (c1); 
+                        int newRow = HigherRow (c1);
+                        INumericCell result = new NumericCell (newValue, newColumn, newRow);
+                        return result;
                 }
 
                 #endregion
@@ -79,7 +91,7 @@ namespace ExcelInterop
 
                 public bool Matches (IComparableCell c1)
                 {
-                        throw new NotImplementedException ();
+                        return this.Equals (c1);
                 }
 
                 #endregion
@@ -90,14 +102,6 @@ namespace ExcelInterop
                 {
                         throw new NotImplementedException ();
                 }
-
-                #endregion
-
-                #region ICell implementation
-
-                public int Row { get; set; }
-
-                public string Column { get; set; }
 
                 #endregion
         }

@@ -19,7 +19,7 @@ namespace OposParser.Logic
 		/// => a = action(a, 4);
 		/// => if (comparison(a)) => break;
 		/// </example>
-		/// <returns>The element of the enumeration the fulfilled the comparison,
+		/// <returns>The element of the enumeration that fulfilled the comparison,
 		/// and the element of the application of the function.</returns>
 		/// <param name="source">The enumeration the function should
 		/// be applied to.</param>
