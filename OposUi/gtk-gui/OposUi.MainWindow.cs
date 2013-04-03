@@ -52,7 +52,7 @@ namespace OposUi
 			this.UIManager.InsertActionGroup (w1, 0);
 			this.AddAccelGroup (this.UIManager.AccelGroup);
 			this.Name = "OposUi.MainWindow";
-			this.Title = global::Mono.Unix.Catalog.GetString ("MainWindow");
+			this.Title = "MainWindow";
 			this.TypeHint = ((global::Gdk.WindowTypeHint)(1));
 			this.WindowPosition = ((global::Gtk.WindowPosition)(4));
 			this.BorderWidth = ((uint)(5));
@@ -96,7 +96,7 @@ namespace OposUi
 			// Container child table3.Gtk.Table+TableChild
 			this.compOperatorErrorImage = new global::Gtk.Image ();
 			this.compOperatorErrorImage.Name = "compOperatorErrorImage";
-			this.compOperatorErrorImage.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "stock_dialog-error", global::Gtk.IconSize.Menu);
+			this.compOperatorErrorImage.Pixbuf = global::Gdk.Pixbuf.LoadFromResource ("OposUi.Icons.Error");
 			this.table3.Add (this.compOperatorErrorImage);
 			global::Gtk.Table.TableChild w4 = ((global::Gtk.Table.TableChild)(this.table3 [this.compOperatorErrorImage]));
 			w4.TopAttach = ((uint)(2));
@@ -108,7 +108,7 @@ namespace OposUi
 			// Container child table3.Gtk.Table+TableChild
 			this.dataTypeErrorImage = new global::Gtk.Image ();
 			this.dataTypeErrorImage.Name = "dataTypeErrorImage";
-			this.dataTypeErrorImage.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "stock_dialog-error", global::Gtk.IconSize.Menu);
+			this.dataTypeErrorImage.Pixbuf = global::Gdk.Pixbuf.LoadFromResource ("OposUi.Icons.Error");
 			this.table3.Add (this.dataTypeErrorImage);
 			global::Gtk.Table.TableChild w5 = ((global::Gtk.Table.TableChild)(this.table3 [this.dataTypeErrorImage]));
 			w5.TopAttach = ((uint)(3));
@@ -120,7 +120,7 @@ namespace OposUi
 			// Container child table3.Gtk.Table+TableChild
 			this.endColumnErrorImage = new global::Gtk.Image ();
 			this.endColumnErrorImage.Name = "endColumnErrorImage";
-			this.endColumnErrorImage.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "stock_dialog-error", global::Gtk.IconSize.Menu);
+			this.endColumnErrorImage.Pixbuf = global::Gdk.Pixbuf.LoadFromResource ("OposUi.Icons.Error");
 			this.table3.Add (this.endColumnErrorImage);
 			global::Gtk.Table.TableChild w6 = ((global::Gtk.Table.TableChild)(this.table3 [this.endColumnErrorImage]));
 			w6.TopAttach = ((uint)(1));
@@ -132,7 +132,7 @@ namespace OposUi
 			// Container child table3.Gtk.Table+TableChild
 			this.endRowErrorImage = new global::Gtk.Image ();
 			this.endRowErrorImage.Name = "endRowErrorImage";
-			this.endRowErrorImage.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "stock_dialog-error", global::Gtk.IconSize.Menu);
+			this.endRowErrorImage.Pixbuf = global::Gdk.Pixbuf.LoadFromResource ("OposUi.Icons.Error");
 			this.table3.Add (this.endRowErrorImage);
 			global::Gtk.Table.TableChild w7 = ((global::Gtk.Table.TableChild)(this.table3 [this.endRowErrorImage]));
 			w7.LeftAttach = ((uint)(5));
@@ -224,7 +224,7 @@ namespace OposUi
 			this.labelColEnd = new global::Gtk.Label ();
 			this.labelColEnd.TooltipMarkup = "Wird keine Endspalte eingegeben wird nur eine Spalte genutzt.\nWird eine Endspalte angegeben wird die Operation auf die Spalten nacheinander angewendet.";
 			this.labelColEnd.Name = "labelColEnd";
-			this.labelColEnd.LabelProp = global::Mono.Unix.Catalog.GetString ("Spalte (End):");
+			this.labelColEnd.LabelProp = "Spalte (End):";
 			this.table3.Add (this.labelColEnd);
 			global::Gtk.Table.TableChild w15 = ((global::Gtk.Table.TableChild)(this.table3 [this.labelColEnd]));
 			w15.TopAttach = ((uint)(1));
@@ -236,7 +236,7 @@ namespace OposUi
 			// Container child table3.Gtk.Table+TableChild
 			this.labelColStart = new global::Gtk.Label ();
 			this.labelColStart.Name = "labelColStart";
-			this.labelColStart.LabelProp = global::Mono.Unix.Catalog.GetString ("Spalte (Start):");
+			this.labelColStart.LabelProp = "Spalte (Start):";
 			this.table3.Add (this.labelColStart);
 			global::Gtk.Table.TableChild w16 = ((global::Gtk.Table.TableChild)(this.table3 [this.labelColStart]));
 			w16.TopAttach = ((uint)(1));
@@ -246,7 +246,7 @@ namespace OposUi
 			// Container child table3.Gtk.Table+TableChild
 			this.labelComparisonValue = new global::Gtk.Label ();
 			this.labelComparisonValue.Name = "labelComparisonValue";
-			this.labelComparisonValue.LabelProp = global::Mono.Unix.Catalog.GetString ("Vergleichswert:");
+			this.labelComparisonValue.LabelProp = "Vergleichswert:";
 			this.table3.Add (this.labelComparisonValue);
 			global::Gtk.Table.TableChild w17 = ((global::Gtk.Table.TableChild)(this.table3 [this.labelComparisonValue]));
 			w17.TopAttach = ((uint)(2));
@@ -256,7 +256,7 @@ namespace OposUi
 			// Container child table3.Gtk.Table+TableChild
 			this.labelDatatype = new global::Gtk.Label ();
 			this.labelDatatype.Name = "labelDatatype";
-			this.labelDatatype.LabelProp = global::Mono.Unix.Catalog.GetString ("Datentyp:");
+			this.labelDatatype.LabelProp = "Datentyp:";
 			this.table3.Add (this.labelDatatype);
 			global::Gtk.Table.TableChild w18 = ((global::Gtk.Table.TableChild)(this.table3 [this.labelDatatype]));
 			w18.TopAttach = ((uint)(3));
@@ -266,7 +266,7 @@ namespace OposUi
 			// Container child table3.Gtk.Table+TableChild
 			this.labelRowEnd = new global::Gtk.Label ();
 			this.labelRowEnd.Name = "labelRowEnd";
-			this.labelRowEnd.LabelProp = global::Mono.Unix.Catalog.GetString ("Zeile (Ende):");
+			this.labelRowEnd.LabelProp = "Zeile (Ende):";
 			this.table3.Add (this.labelRowEnd);
 			global::Gtk.Table.TableChild w19 = ((global::Gtk.Table.TableChild)(this.table3 [this.labelRowEnd]));
 			w19.LeftAttach = ((uint)(3));
@@ -276,7 +276,7 @@ namespace OposUi
 			// Container child table3.Gtk.Table+TableChild
 			this.labelRowStart = new global::Gtk.Label ();
 			this.labelRowStart.Name = "labelRowStart";
-			this.labelRowStart.LabelProp = global::Mono.Unix.Catalog.GetString ("Zeile (Start):");
+			this.labelRowStart.LabelProp = "Zeile (Start):";
 			this.table3.Add (this.labelRowStart);
 			global::Gtk.Table.TableChild w20 = ((global::Gtk.Table.TableChild)(this.table3 [this.labelRowStart]));
 			w20.XOptions = ((global::Gtk.AttachOptions)(4));
@@ -284,7 +284,7 @@ namespace OposUi
 			// Container child table3.Gtk.Table+TableChild
 			this.labelTextComp = new global::Gtk.Label ();
 			this.labelTextComp.Name = "labelTextComp";
-			this.labelTextComp.LabelProp = global::Mono.Unix.Catalog.GetString ("Textvergleich:");
+			this.labelTextComp.LabelProp = "Textvergleich:";
 			this.table3.Add (this.labelTextComp);
 			global::Gtk.Table.TableChild w21 = ((global::Gtk.Table.TableChild)(this.table3 [this.labelTextComp]));
 			w21.TopAttach = ((uint)(2));
@@ -296,7 +296,7 @@ namespace OposUi
 			// Container child table3.Gtk.Table+TableChild
 			this.startColumnErrorImage = new global::Gtk.Image ();
 			this.startColumnErrorImage.Name = "startColumnErrorImage";
-			this.startColumnErrorImage.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "stock_dialog-error", global::Gtk.IconSize.Menu);
+			this.startColumnErrorImage.Pixbuf = global::Gdk.Pixbuf.LoadFromResource ("OposUi.Icons.Error");
 			this.table3.Add (this.startColumnErrorImage);
 			global::Gtk.Table.TableChild w22 = ((global::Gtk.Table.TableChild)(this.table3 [this.startColumnErrorImage]));
 			w22.TopAttach = ((uint)(1));
@@ -308,7 +308,7 @@ namespace OposUi
 			// Container child table3.Gtk.Table+TableChild
 			this.startRowErrorImage = new global::Gtk.Image ();
 			this.startRowErrorImage.Name = "startRowErrorImage";
-			this.startRowErrorImage.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "stock_dialog-error", global::Gtk.IconSize.Menu);
+			this.startRowErrorImage.Pixbuf = global::Gdk.Pixbuf.LoadFromResource ("OposUi.Icons.Error");
 			this.table3.Add (this.startRowErrorImage);
 			global::Gtk.Table.TableChild w23 = ((global::Gtk.Table.TableChild)(this.table3 [this.startRowErrorImage]));
 			w23.LeftAttach = ((uint)(2));
@@ -318,7 +318,7 @@ namespace OposUi
 			// Container child table3.Gtk.Table+TableChild
 			this.textCompErrorImage = new global::Gtk.Image ();
 			this.textCompErrorImage.Name = "textCompErrorImage";
-			this.textCompErrorImage.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "stock_dialog-error", global::Gtk.IconSize.Menu);
+			this.textCompErrorImage.Pixbuf = global::Gdk.Pixbuf.LoadFromResource ("OposUi.Icons.Error");
 			this.table3.Add (this.textCompErrorImage);
 			global::Gtk.Table.TableChild w24 = ((global::Gtk.Table.TableChild)(this.table3 [this.textCompErrorImage]));
 			w24.TopAttach = ((uint)(2));
@@ -384,7 +384,7 @@ namespace OposUi
 			this.table4.RowSpacing = ((uint)(6));
 			this.table4.ColumnSpacing = ((uint)(6));
 			// Container child table4.Gtk.Table+TableChild
-			this.radioAddition = new global::Gtk.RadioButton (global::Mono.Unix.Catalog.GetString ("Addieren"));
+			this.radioAddition = new global::Gtk.RadioButton ("Addieren");
 			this.radioAddition.CanFocus = true;
 			this.radioAddition.Name = "radioAddition";
 			this.radioAddition.DrawIndicator = true;
@@ -394,7 +394,7 @@ namespace OposUi
 			global::Gtk.Table.TableChild w30 = ((global::Gtk.Table.TableChild)(this.table4 [this.radioAddition]));
 			w30.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table4.Gtk.Table+TableChild
-			this.radioDivision = new global::Gtk.RadioButton (global::Mono.Unix.Catalog.GetString ("Dividieren"));
+			this.radioDivision = new global::Gtk.RadioButton ("Dividieren");
 			this.radioDivision.CanFocus = true;
 			this.radioDivision.Name = "radioDivision";
 			this.radioDivision.DrawIndicator = true;
@@ -408,7 +408,7 @@ namespace OposUi
 			w31.RightAttach = ((uint)(2));
 			w31.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table4.Gtk.Table+TableChild
-			this.radioMultiplication = new global::Gtk.RadioButton (global::Mono.Unix.Catalog.GetString ("Multiplizieren"));
+			this.radioMultiplication = new global::Gtk.RadioButton ("Multiplizieren");
 			this.radioMultiplication.CanFocus = true;
 			this.radioMultiplication.Name = "radioMultiplication";
 			this.radioMultiplication.DrawIndicator = true;
@@ -420,7 +420,7 @@ namespace OposUi
 			w32.BottomAttach = ((uint)(2));
 			w32.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table4.Gtk.Table+TableChild
-			this.radioSubtraction = new global::Gtk.RadioButton (global::Mono.Unix.Catalog.GetString ("Subtrahieren"));
+			this.radioSubtraction = new global::Gtk.RadioButton ("Subtrahieren");
 			this.radioSubtraction.CanFocus = true;
 			this.radioSubtraction.Name = "radioSubtraction";
 			this.radioSubtraction.DrawIndicator = true;
@@ -437,7 +437,7 @@ namespace OposUi
 			this.frameOperations.WidthRequest = 95;
 			this.frameOperations.HeightRequest = 57;
 			this.frameOperations.Name = "frameOperations";
-			this.frameOperations.LabelProp = global::Mono.Unix.Catalog.GetString ("<b>Operationen:</b>");
+			this.frameOperations.LabelProp = "<b>Operationen:</b>";
 			this.frameOperations.UseMarkup = true;
 			this.frame1.LabelWidget = this.frameOperations;
 			this.vbox2.Add (this.frame1);

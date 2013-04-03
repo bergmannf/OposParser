@@ -45,7 +45,7 @@ namespace OposParser.Logic
 		}
 
 		/// <summary>
-		/// Partial application of the GreaterEqual function.
+		/// Partial application for 2 argument function.
 		/// </summary>
 		/// <param name="f">The function to be partially applied</param>
 		/// <param name="argument">The parameter to be used.</param>

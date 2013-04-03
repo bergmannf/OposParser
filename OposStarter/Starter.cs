@@ -12,21 +12,29 @@ namespace OposParser
         /// </summary>
         public class Starter
         {
-                static Thread appThread;
+                private static Thread _appThread;
+                /// <summary>
+                /// UI-Thread.
+                /// </summary>
+                /// <value>The ui thread.</value>
+                public static Thread AppThread { 
+                        get { return _appThread; }
+                }
+
                 private delegate void UiStartDelegate ();
-		
+        
                 /// <summary>
                 /// This is the function called from Excel to open the UI.
                 /// </summary>
                 [ExcelCommand(MenuName="OposApplications", MenuText="OposParser")]
                 public static void OposParser ()
                 {
-                        appThread = new Thread (OpenUi);
-                        appThread.SetApartmentState (ApartmentState.STA);
-                        appThread.IsBackground = true;
-                        appThread.Start ();
+                        _appThread = new Thread (OpenUi);
+                        _appThread.SetApartmentState (ApartmentState.STA);
+                        _appThread.IsBackground = true;
+                        _appThread.Start ();
                 }
-		
+        
                 /// <summary>
                 /// Either open a new window or reactivates the old window.
                 /// </summary>

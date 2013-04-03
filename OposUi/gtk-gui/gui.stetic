@@ -8,6 +8,13 @@
     <widget-library name="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
     <widget-library name="../bin/Debug/OposUi.exe" internal="true" />
   </import>
+  <icon-factory>
+    <icon-set id="Error">
+      <source>
+        <property name="Image">resource:OposUi.Icons.Error</property>
+      </source>
+    </icon-set>
+  </icon-factory>
   <widget class="Gtk.Window" id="OposUi.MainWindow" design-size="578 376">
     <action-group name="Default" />
     <property name="MemberName" />
@@ -89,7 +96,7 @@
                   <widget class="Gtk.Image" id="compOperatorErrorImage">
                     <property name="MemberName" />
                     <property name="Visible">False</property>
-                    <property name="Pixbuf">stock:stock_dialog-error Menu</property>
+                    <property name="Pixbuf">resource:OposUi.Icons.Error</property>
                   </widget>
                   <packing>
                     <property name="TopAttach">2</property>
@@ -111,7 +118,7 @@
                   <widget class="Gtk.Image" id="dataTypeErrorImage">
                     <property name="MemberName" />
                     <property name="Visible">False</property>
-                    <property name="Pixbuf">stock:stock_dialog-error Menu</property>
+                    <property name="Pixbuf">resource:OposUi.Icons.Error</property>
                   </widget>
                   <packing>
                     <property name="TopAttach">3</property>
@@ -133,7 +140,7 @@
                   <widget class="Gtk.Image" id="endColumnErrorImage">
                     <property name="MemberName" />
                     <property name="Visible">False</property>
-                    <property name="Pixbuf">stock:stock_dialog-error Menu</property>
+                    <property name="Pixbuf">resource:OposUi.Icons.Error</property>
                   </widget>
                   <packing>
                     <property name="TopAttach">1</property>
@@ -155,7 +162,7 @@
                   <widget class="Gtk.Image" id="endRowErrorImage">
                     <property name="MemberName" />
                     <property name="Visible">False</property>
-                    <property name="Pixbuf">stock:stock_dialog-error Menu</property>
+                    <property name="Pixbuf">resource:OposUi.Icons.Error</property>
                   </widget>
                   <packing>
                     <property name="LeftAttach">5</property>
@@ -456,7 +463,7 @@ Wird eine Endspalte angegeben wird die Operation auf die Spalten nacheinander an
                   <widget class="Gtk.Image" id="startColumnErrorImage">
                     <property name="MemberName" />
                     <property name="Visible">False</property>
-                    <property name="Pixbuf">stock:stock_dialog-error Menu</property>
+                    <property name="Pixbuf">resource:OposUi.Icons.Error</property>
                   </widget>
                   <packing>
                     <property name="TopAttach">1</property>
@@ -478,7 +485,7 @@ Wird eine Endspalte angegeben wird die Operation auf die Spalten nacheinander an
                   <widget class="Gtk.Image" id="startRowErrorImage">
                     <property name="MemberName" />
                     <property name="Visible">False</property>
-                    <property name="Pixbuf">stock:stock_dialog-error Menu</property>
+                    <property name="Pixbuf">resource:OposUi.Icons.Error</property>
                   </widget>
                   <packing>
                     <property name="LeftAttach">2</property>
@@ -498,7 +505,7 @@ Wird eine Endspalte angegeben wird die Operation auf die Spalten nacheinander an
                   <widget class="Gtk.Image" id="textCompErrorImage">
                     <property name="MemberName" />
                     <property name="Visible">False</property>
-                    <property name="Pixbuf">stock:stock_dialog-error Menu</property>
+                    <property name="Pixbuf">resource:OposUi.Icons.Error</property>
                   </widget>
                   <packing>
                     <property name="TopAttach">2</property>

@@ -41,14 +41,6 @@ namespace OposParser
                                 return f;
                         }
                 }
-
-                public static Func<IComparableCell, IComparableCell, bool> Matches {
-                        get {
-                                Func<IComparableCell, IComparableCell, bool> f =
-                                        (c1, c2) => c1.Matches (c2);
-                                return f;
-                        }
-                }
         }
 }
 

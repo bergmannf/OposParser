@@ -100,6 +100,18 @@ namespace OposTests
                         Assert.AreEqual ("B", cell.Item1.Column);
                 }
 
+                [Test]
+                public void TestStringOperation () {
+                        ICollection<IComparableCell> cells = new List<IComparableCell> {
+                                new ComparableExcelCell("one", 1, 1),
+                                new ComparableExcelCell("two", 1, 2),
+                                new ComparableExcelCell("three", 1, 3)
+                        };
+                        Func<IComparableCell, bool> condition = Comparators.Contains ("two");
+                        var cell = cells.Where (c => condition(c));
+                        Assert.AreEqual ("two", cell.First().Value);
+                }
+
                 static ICollection<ICell> NumericTestCells ()
                 {
                         ICollection<ICell> cells = new List<ICell> {

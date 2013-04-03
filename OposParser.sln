@@ -53,7 +53,7 @@ Global
 		{A2F1F5E8-1E7F-496F-B19B-00B84D0302AF}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = OposUi\OposUi.csproj
+		StartupItem = OposStarter\OposStarter.csproj
 		Policies = $0
 		$0.DotNetNamingPolicy = $1
 		$1.DirectoryNamespaceAssociation = None
