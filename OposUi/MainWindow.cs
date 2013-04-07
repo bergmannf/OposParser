@@ -1,152 +1,39 @@
 using System;
 using System.Text.RegularExpressions;
 using Gtk;
+using System.Collections.Generic;
 
 namespace OposUi
 {
         public partial class MainWindow: Gtk.Window
         {
-                private MainWindowController _controller;
                 private MainWindowModel _model;
-                /// <summary>
-                /// All rows must be simple numbers.
-                /// </summary>
-                private Regex RowRegex = new Regex (@"^\d+$");
-                const string InvalidRowMessage = "Eine Zeilenbezeichnung besteht nur aus Zahlen.";
 
-                /// <summary>
-                /// All columns must be simple letters.
-                /// </summary>
-                private Regex ColumnRegex = new Regex (@"^\w+$");
-                const string InvalidColumnMessage = "Eine Spaltenbezeichnung besteht nur aus Buchstaben.";
+                #region controller-required events
+
+                public event EventHandler<StringEventArgs> ComparisonChanged;
+                public event EventHandler<EventArgs> OperationChanged;
+                public event EventHandler<StringEventArgs> ColumnChanged;
+                public event EventHandler<StringEventArgs> EndRowChanged;
+                public event EventHandler<StringEventArgs> StartRowChanged;
+                public event EventHandler<StringEventArgs> ValueChanged;
+                public event EventHandler<TypeEventArgs> TypeChanged;
+
+                #endregion
 
                 public MainWindow (): base (Gtk.WindowType.Toplevel)
                 {
                         this.Build ();
                 }
 
-        #region Validators
-
-                /// <summary>
-                /// Validates the row.
-                /// </summary>
-                /// <returns>
-                /// The row.
-                /// </returns>
-                /// <param name='rowText'>
-                /// If set to <c>true</c> row text.
-                /// </param>
-                public bool ValidateRow (string rowText)
+                public void DisplayComparisons (ICollection<string> comparisons)
                 {
-                        if (rowText != null && RowRegex.IsMatch (rowText)) {
-                                return true;
-                        } else {
-                                return false;
+                        foreach (string comparison in comparisons) {
+                                comboboxComp.InsertText(0, comparison);
                         }
-                }
 
-                /// <summary>
-                /// Validates the column.
-                /// </summary>
-                /// <returns>
-                /// The column.
-                /// </returns>
-                /// <param name='columnText'>
-                /// If set to <c>true</c> column text.
-                /// </param>
-                public bool ValidateColumn (string columnText)
-                {
-                        if (columnText != null && ColumnRegex.IsMatch (columnText)) {
-                                return true;
-                        } else {
-                                return false;
-                        }
                 }
-        
-                public void ChangeOkButtonEnabledState (bool isEnabled)
-                {
-                        buttonOk.Sensitive = isEnabled;
-                }
-
-        #endregion
-
-                protected void CancelButtonClicked (object sender, EventArgs e)
-                {
-                        Application.Quit ();
-                }
-
-                protected void StartRowFocusOut (object o, FocusOutEventArgs args)
-                {
-                        Entry startRow = o as Entry;
-                        if (startRow != null) {
-                                string text = startRow.Text;
-                                bool valid = ValidateRow (text);
-                                if (valid) {
-                                        startRowErrorImage.Visible = false;
-                                        HideErrorMessage ();
-                                } else {
-                                        startRowErrorImage.Visible = true;
-                                        DisplayErrorMessage (InvalidRowMessage);
-                                }
-                        }
-                }
-
-                protected void EndRowFocusOut (object o, FocusOutEventArgs args)
-                {
-                        Entry startRow = o as Entry;
-                        if (startRow != null) {
-                                string text = startRow.Text;
-                                bool valid = ValidateRow (text);
-                                if (valid) {
-                                        endRowErrorImage.Visible = false;
-                                        HideErrorMessage ();
-                                } else {
-                                        endRowErrorImage.Visible = true;
-                                        DisplayErrorMessage (InvalidRowMessage);
-                                }
-                        }
-                }
-
-                protected void StartColumnFocusOut (object o, FocusOutEventArgs args)
-                {
-                        Entry startColumn = o as Entry;
-                        if (startColumn != null) {
-                                string text = startColumn.Text;
-                                bool valid = ValidateColumn (text);
-                                if (valid) {
-                                        startColumnErrorImage.Visible = false;
-                                        HideErrorMessage ();
-                                } else {
-                                        startColumnErrorImage.Visible = true;
-                                        DisplayErrorMessage (InvalidColumnMessage);
-                                }
-                        }
-                }
-
-                protected void EndColumnFocusOut (object o, FocusOutEventArgs args)
-                {
-                        Entry endColumn = o as Entry;
-                        if (endColumn != null) {
-                                string text = endColumn.Text;
-                                bool valid = ValidateColumn (text);
-                                if (valid) {
-                                        endColumnErrorImage.Visible = false;
-                                        HideErrorMessage ();
-                                } else {
-                                        endColumnErrorImage.Visible = true;
-                                        DisplayErrorMessage (InvalidColumnMessage);
-                                }
-                        }
-                }
-
-                protected void ComparisonValueFocusOut (object o, FocusOutEventArgs args)
-                {
-                        Entry compEntry = o as Entry;
-                        if (compEntry != null) {
-                    
-                        }
-                }
-
+                
                 private void DisplayErrorMessage (string message)
                 {
                         string previousText = errorTextView.Buffer.Text;
@@ -162,15 +49,65 @@ namespace OposUi
                         errorTextView.Buffer.Text = newMessage;
                 }
 
-                private void HideErrorMessage ()
+                #region Validators
+
+                public void ChangeOkButtonEnabledState (bool isEnabled)
                 {
-                        ErrorTextViewScrollWindow.ModifyBg (StateType.Normal);
-                        errorTextView.Visible = false;
+                        buttonOk.Sensitive = isEnabled;
+                }
+
+                #endregion
+
+                protected void CancelButtonClicked (object sender, EventArgs e)
+                {
+                        Application.Quit ();
+                }
+
+                protected void StartRowFocusOut (object o, FocusOutEventArgs args)
+                {
+                        Entry startRow = o as Entry;
+                        if (startRow != null) {
+                                StartRowChanged(this, new StringEventArgs(startRow.Text));
+                        }
+                }
+
+                protected void EndRowFocusOut (object o, FocusOutEventArgs args)
+                {
+                        Entry endRow = o as Entry;
+                        if (endRow != null) {
+                                EndRowChanged(this, new StringEventArgs(endRow.Text));
+                        }
+                }
+
+                protected void ColumnFocusOut (object o, FocusOutEventArgs args)
+                {
+                        Entry startColumn = o as Entry;
+                        if (startColumn != null) {
+                                ColumnChanged (this, new StringEventArgs(startColumn.Text));
+                        }
+                }
+
+                protected void ComparisonValueFocusOut (object o, FocusOutEventArgs args)
+                {
+                        Entry compEntry = o as Entry;
+                        if (compEntry != null) {
+                                ComparisonChanged(this, new StringEventArgs(compEntry.Text));
+                        }
+                }
+
+                public void DisplayErrorMessages (ICollection<string> messages)
+                {
+                        errorTextView.Buffer.Text = "";
+                        foreach (string message in messages) {
+                                DisplayErrorMessage(message);
+                        }
                 }
         
                 protected void OnOkButtonClicked (object sender, EventArgs e)
                 {
-                        throw new NotImplementedException ();
+                        string startColumn = entryColumnStart.Text;
+                        string startRow = entryRowStart.Text;
+                        string endRow = entryRowEnd.Text;
                 }
         }
 }

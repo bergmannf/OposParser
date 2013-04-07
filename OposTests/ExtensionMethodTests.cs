@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -89,7 +89,7 @@ namespace OposTests
                                                select (INumericCell) cl);
                                 castCells = tmpEnum.ToList();
                         }
-                        Func<INumericCell, bool> condition = Comparators.GreaterEqual(2);
+                        Func<INumericCell, bool> condition = Comparisons.GreaterEqual(2);
                         Func<INumericCell, INumericCell, INumericCell> f = Operations.Add;
                         var cell = IterTools.ApplyUntil<INumericCell> (castCells,
                                                                        f,
@@ -107,7 +107,7 @@ namespace OposTests
                                 new ComparableExcelCell("two", 1, 2),
                                 new ComparableExcelCell("three", 1, 3)
                         };
-                        Func<IComparableCell, bool> condition = Comparators.Contains ("two");
+                        Func<IComparableCell, bool> condition = Comparisons.Contains ("two");
                         var cell = cells.Where (c => condition(c));
                         Assert.AreEqual ("two", cell.First().Value);
                 }

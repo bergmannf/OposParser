@@ -1,10 +1,19 @@
 using System;
 using OposParser.Interface;
+using System.Collections.Generic;
 
 namespace OposParser
 {
-        public static class Comparators
+        public static class Comparisons
         {
+                public static IDictionary<Type, Func> TypeToComparisonsMapping;
+
+                static Comparisons() {
+                        TypeToComparisonsMapping = new Dictionary<Type, string>();
+                        ICollection<Func> numericValues = new List<Func> ();
+                        numericValues.Add (GreaterEqual);
+                }
+
                 #region Numeric comparisons
                 public static Func<INumericCell, bool> GreaterEqual (double number) {
                         Func<INumericCell, bool> greaterEqual = 

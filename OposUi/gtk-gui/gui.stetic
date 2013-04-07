@@ -40,25 +40,16 @@
                 <property name="RowSpacing">5</property>
                 <property name="ColumnSpacing">5</property>
                 <child>
-                  <placeholder />
-                </child>
-                <child>
-                  <placeholder />
-                </child>
-                <child>
-                  <placeholder />
-                </child>
-                <child>
-                  <widget class="Gtk.ComboBox" id="comboboxDatatype">
+                  <widget class="Gtk.ComboBox" id="comboboxComp">
                     <property name="MemberName" />
                     <property name="IsTextCombo">True</property>
                     <property name="Items" translatable="yes" />
                   </widget>
                   <packing>
-                    <property name="TopAttach">3</property>
-                    <property name="BottomAttach">4</property>
-                    <property name="LeftAttach">1</property>
-                    <property name="RightAttach">2</property>
+                    <property name="TopAttach">2</property>
+                    <property name="BottomAttach">3</property>
+                    <property name="LeftAttach">4</property>
+                    <property name="RightAttach">5</property>
                     <property name="AutoSize">True</property>
                     <property name="XOptions">Fill</property>
                     <property name="YOptions">Fill</property>
@@ -71,14 +62,14 @@
                   </packing>
                 </child>
                 <child>
-                  <widget class="Gtk.ComboBox" id="comboboxTextComp">
+                  <widget class="Gtk.ComboBox" id="comboboxDatatype">
                     <property name="MemberName" />
                     <property name="IsTextCombo">True</property>
                     <property name="Items" translatable="yes" />
                   </widget>
                   <packing>
-                    <property name="TopAttach">2</property>
-                    <property name="BottomAttach">3</property>
+                    <property name="TopAttach">1</property>
+                    <property name="BottomAttach">2</property>
                     <property name="LeftAttach">4</property>
                     <property name="RightAttach">5</property>
                     <property name="AutoSize">True</property>
@@ -121,37 +112,15 @@
                     <property name="Pixbuf">resource:OposUi.Icons.Error</property>
                   </widget>
                   <packing>
-                    <property name="TopAttach">3</property>
-                    <property name="BottomAttach">4</property>
-                    <property name="LeftAttach">2</property>
-                    <property name="RightAttach">3</property>
-                    <property name="AutoSize">False</property>
-                    <property name="XOptions">0</property>
-                    <property name="YOptions">Fill</property>
-                    <property name="XExpand">False</property>
-                    <property name="XFill">False</property>
-                    <property name="XShrink">False</property>
-                    <property name="YExpand">False</property>
-                    <property name="YFill">True</property>
-                    <property name="YShrink">False</property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="Gtk.Image" id="endColumnErrorImage">
-                    <property name="MemberName" />
-                    <property name="Visible">False</property>
-                    <property name="Pixbuf">resource:OposUi.Icons.Error</property>
-                  </widget>
-                  <packing>
                     <property name="TopAttach">1</property>
                     <property name="BottomAttach">2</property>
                     <property name="LeftAttach">5</property>
                     <property name="RightAttach">6</property>
-                    <property name="AutoSize">False</property>
-                    <property name="XOptions">0</property>
+                    <property name="AutoSize">True</property>
+                    <property name="XOptions">Fill</property>
                     <property name="YOptions">Fill</property>
                     <property name="XExpand">False</property>
-                    <property name="XFill">False</property>
+                    <property name="XFill">True</property>
                     <property name="XShrink">False</property>
                     <property name="YExpand">False</property>
                     <property name="YFill">True</property>
@@ -179,36 +148,12 @@
                   </packing>
                 </child>
                 <child>
-                  <widget class="Gtk.Entry" id="entryColumnEnd">
-                    <property name="MemberName" />
-                    <property name="CanFocus">True</property>
-                    <property name="IsEditable">True</property>
-                    <property name="InvisibleChar">●</property>
-                    <signal name="FocusOutEvent" handler="EndColumnFocusOut" />
-                  </widget>
-                  <packing>
-                    <property name="TopAttach">1</property>
-                    <property name="BottomAttach">2</property>
-                    <property name="LeftAttach">4</property>
-                    <property name="RightAttach">5</property>
-                    <property name="AutoSize">True</property>
-                    <property name="XOptions">Fill</property>
-                    <property name="YOptions">Fill</property>
-                    <property name="XExpand">False</property>
-                    <property name="XFill">True</property>
-                    <property name="XShrink">False</property>
-                    <property name="YExpand">False</property>
-                    <property name="YFill">True</property>
-                    <property name="YShrink">False</property>
-                  </packing>
-                </child>
-                <child>
                   <widget class="Gtk.Entry" id="entryColumnStart">
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="IsEditable">True</property>
                     <property name="InvisibleChar">●</property>
-                    <signal name="FocusOutEvent" handler="StartColumnFocusOut" />
+                    <signal name="FocusOutEvent" handler="ColumnFocusOut" />
                   </widget>
                   <packing>
                     <property name="TopAttach">1</property>
@@ -216,9 +161,8 @@
                     <property name="LeftAttach">1</property>
                     <property name="RightAttach">2</property>
                     <property name="AutoSize">True</property>
-                    <property name="XOptions">Fill</property>
                     <property name="YOptions">Fill</property>
-                    <property name="XExpand">False</property>
+                    <property name="XExpand">True</property>
                     <property name="XFill">True</property>
                     <property name="XShrink">False</property>
                     <property name="YExpand">False</property>
@@ -240,9 +184,8 @@
                     <property name="LeftAttach">1</property>
                     <property name="RightAttach">2</property>
                     <property name="AutoSize">True</property>
-                    <property name="XOptions">Fill</property>
                     <property name="YOptions">Fill</property>
-                    <property name="XExpand">False</property>
+                    <property name="XExpand">True</property>
                     <property name="XFill">True</property>
                     <property name="XShrink">False</property>
                     <property name="YExpand">False</property>
@@ -284,9 +227,8 @@
                     <property name="LeftAttach">1</property>
                     <property name="RightAttach">2</property>
                     <property name="AutoSize">True</property>
-                    <property name="XOptions">Fill</property>
                     <property name="YOptions">Fill</property>
-                    <property name="XExpand">False</property>
+                    <property name="XExpand">True</property>
                     <property name="XFill">True</property>
                     <property name="XShrink">False</property>
                     <property name="YExpand">False</property>
@@ -309,7 +251,7 @@
                     </child>
                   </widget>
                   <packing>
-                    <property name="TopAttach">4</property>
+                    <property name="TopAttach">3</property>
                     <property name="BottomAttach">5</property>
                     <property name="RightAttach">6</property>
                     <property name="AutoSize">True</property>
@@ -318,29 +260,6 @@
                     <property name="XFill">True</property>
                     <property name="XShrink">False</property>
                     <property name="YExpand">True</property>
-                    <property name="YFill">True</property>
-                    <property name="YShrink">False</property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="Gtk.Label" id="labelColEnd">
-                    <property name="MemberName" />
-                    <property name="Tooltip" translatable="yes">Wird keine Endspalte eingegeben wird nur eine Spalte genutzt.
-Wird eine Endspalte angegeben wird die Operation auf die Spalten nacheinander angewendet.</property>
-                    <property name="LabelProp" translatable="yes">Spalte (End):</property>
-                  </widget>
-                  <packing>
-                    <property name="TopAttach">1</property>
-                    <property name="BottomAttach">2</property>
-                    <property name="LeftAttach">3</property>
-                    <property name="RightAttach">4</property>
-                    <property name="AutoSize">True</property>
-                    <property name="XOptions">Fill</property>
-                    <property name="YOptions">Fill</property>
-                    <property name="XExpand">False</property>
-                    <property name="XFill">True</property>
-                    <property name="XShrink">False</property>
-                    <property name="YExpand">False</property>
                     <property name="YFill">True</property>
                     <property name="YShrink">False</property>
                   </packing>
@@ -389,8 +308,10 @@ Wird eine Endspalte angegeben wird die Operation auf die Spalten nacheinander an
                     <property name="LabelProp" translatable="yes">Datentyp:</property>
                   </widget>
                   <packing>
-                    <property name="TopAttach">3</property>
-                    <property name="BottomAttach">4</property>
+                    <property name="TopAttach">1</property>
+                    <property name="BottomAttach">2</property>
+                    <property name="LeftAttach">3</property>
+                    <property name="RightAttach">4</property>
                     <property name="AutoSize">True</property>
                     <property name="XOptions">Fill</property>
                     <property name="YOptions">Fill</property>
@@ -441,7 +362,7 @@ Wird eine Endspalte angegeben wird die Operation auf die Spalten nacheinander an
                 <child>
                   <widget class="Gtk.Label" id="labelTextComp">
                     <property name="MemberName" />
-                    <property name="LabelProp" translatable="yes">Textvergleich:</property>
+                    <property name="LabelProp" translatable="yes">Vergleich:</property>
                   </widget>
                   <packing>
                     <property name="TopAttach">2</property>
@@ -485,6 +406,7 @@ Wird eine Endspalte angegeben wird die Operation auf die Spalten nacheinander an
                   <widget class="Gtk.Image" id="startRowErrorImage">
                     <property name="MemberName" />
                     <property name="Visible">False</property>
+                    <property name="Tooltip" translatable="yes" />
                     <property name="Pixbuf">resource:OposUi.Icons.Error</property>
                   </widget>
                   <packing>
@@ -607,7 +529,6 @@ Wird eine Endspalte angegeben wird die Operation auf die Spalten nacheinander an
                         <property name="MemberName" />
                         <property name="CanFocus">True</property>
                         <property name="Label" translatable="yes">Addieren</property>
-                        <property name="Active">True</property>
                         <property name="DrawIndicator">True</property>
                         <property name="HasLabel">True</property>
                         <property name="UseUnderline">True</property>

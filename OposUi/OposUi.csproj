@@ -58,6 +58,7 @@
     <EmbeddedResource Include="icons\exclamation.png">
       <LogicalName>OposUi.Icons.Error</LogicalName>
     </EmbeddedResource>
+    <EmbeddedResource Include="icons\help.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="gtk-gui\generated.cs" />
@@ -67,12 +68,18 @@
     <Compile Include="MainWindowController.cs" />
     <Compile Include="MainWindowModel.cs" />
     <Compile Include="gtk-gui\OposUi.MainWindow.cs" />
+    <Compile Include="StringEventArgs.cs" />
+    <Compile Include="TypeEventArgs.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\OposParser\OposParser.csproj">
       <Project>{5E508751-3EA0-491B-8FEA-424FC8D5700B}</Project>
       <Name>OposParser</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ExcelInterop\ExcelInterop.csproj">
+      <Project>{56CB0658-83B4-472C-8223-E4003C6EE36A}</Project>
+      <Name>ExcelInterop</Name>
     </ProjectReference>
   </ItemGroup>
   <ProjectExtensions>

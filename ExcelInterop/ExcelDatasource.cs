@@ -2,9 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Office.Interop.Excel;
-using ExcelDna;
 using System.Runtime.InteropServices;
+using ExcelDna;
+using Microsoft.Office.Interop.Excel;
 using NLog;
 using OposParser.Interface;
 
@@ -27,10 +27,10 @@ namespace ExcelInterop
                 /// <summary>
                 /// Initializes a new instance of the <see cref="OposParser.ExcelInterop"/> class.
                 /// </summary>
-                public ExcelDatasource (Application excel)
+                public ExcelDatasource ()
                 {
                         // Acquire reference to currently running excel.
-                        this._excelApplication = excel;
+                        this._excelApplication = ActiveExcel;
                 }
 
                 /// <summary>

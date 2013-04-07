@@ -9,9 +9,16 @@ namespace OposUi
         {
                 #region Properties and Fields
                 
-                private MainWindowController _controller;
-                
-                private Parser _parser;
+                private OposParserFacade _parser;
+
+                public OposParserFacade Parser {
+                        get {
+                                return _parser;
+                        }
+                        set {
+                                _parser = value;
+                        }
+                }
                 
                 private IList<ICell> _selectedCells;
 
@@ -48,9 +55,15 @@ namespace OposUi
                 
                 #endregion
         
-                public MainWindowModel (MainWindowController controller)
+                public MainWindowModel (OposParserFacade parser)
                 {
-                        _controller = controller;
+                        this.Parser = parser;
+                }
+
+                public ICollection<string> GetComparisonsForType (Type value)
+                {
+                        this.Parser.GetAvailableComparisonsForType (value);
+                        throw new NotImplementedException ();
                 }
         }
 }
